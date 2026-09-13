@@ -1,5 +1,5 @@
 {
-  description = "Neovim configuration with autoconf.nvim and themekit.nvim";
+  description = "Neovim configuration with autoconf.nvim, themekit.nvim and workbench.nvim";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -13,9 +13,14 @@
       url = "github:OlegHQ/themekit.nvim";
       flake = false;
     };
+
+    workbench-nvim = {
+      url = "github:OlegHQ/workbench.nvim?ref=dev";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, autoconf-nvim, themekit-nvim, ... }:
+  outputs = { self, nixpkgs, autoconf-nvim, themekit-nvim, workbench-nvim, ... }:
     let
       supportedSystems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
@@ -106,6 +111,9 @@
 
               # Plugin: themekit.nvim
               "nvim/pack/plugins/start/themekit.nvim".source = themekit-nvim;
+
+              # Plugin: workbench.nvim
+              "nvim/pack/plugins/start/workbench.nvim".source = workbench-nvim;
             };
           });
         };
@@ -122,6 +130,11 @@
             name = "nvimconf";
             src = ./.;
 
+            # This derivation only assembles configuration files. Do not run
+            # the repository Makefile, whose default target is developer-facing
+            # and may perform git mutations.
+            dontBuild = true;
+
             installPhase = ''
               mkdir -p $out
 
@@ -137,6 +150,7 @@
               mkdir -p $out/pack/plugins/start
               cp -r ${autoconf-nvim} $out/pack/plugins/start/autoconf.nvim
               cp -r ${themekit-nvim} $out/pack/plugins/start/themekit.nvim
+              cp -r ${workbench-nvim} $out/pack/plugins/start/workbench.nvim
             '';
           };
         in {
@@ -160,4 +174,3 @@
         });
     };
 }
-

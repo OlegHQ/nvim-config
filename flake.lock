@@ -3,11 +3,11 @@
     "autoconf-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1782762684,
-        "narHash": "sha256-l+kyx2CcsG5BdSsDk2pIjmZme6E9OwheoJ4XhtUrGxQ=",
+        "lastModified": 1789296509,
+        "narHash": "sha256-Ev917uj2Cn6Ugwg7NjfPHlw0IpwQTcpVDHjinq5/Zgw=",
         "owner": "OlegHQ",
         "repo": "autoconf.nvim",
-        "rev": "5a87cf0b40b43705357db892a1b07a40d418363c",
+        "rev": "fa7fc84bfafe3a7f4aaec936613056074bdfb5ed",
         "type": "github"
       },
       "original": {
@@ -36,22 +36,40 @@
       "inputs": {
         "autoconf-nvim": "autoconf-nvim",
         "nixpkgs": "nixpkgs",
-        "themekit-nvim": "themekit-nvim"
+        "themekit-nvim": "themekit-nvim",
+        "workbench-nvim": "workbench-nvim"
       }
     },
     "themekit-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1777464016,
-        "narHash": "sha256-zLI296bXeLI+J6j1mz6uDRFBs97sMwhzQf2280LbIXE=",
+        "lastModified": 1789296509,
+        "narHash": "sha256-uTNfWDSYJ0e9p8rro0lcORIxjVFwQaVkmEhKlp1x+6s=",
         "owner": "OlegHQ",
         "repo": "themekit.nvim",
-        "rev": "d023de449b4d906154975b3d180cfff70f75ba3c",
+        "rev": "e5424d5fccefb88d10b577740be0f3c56bc6fcda",
         "type": "github"
       },
       "original": {
         "owner": "OlegHQ",
         "repo": "themekit.nvim",
+        "type": "github"
+      }
+    },
+    "workbench-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789296587,
+        "narHash": "sha256-fjFdDEp0xUuvwn0UB/nEZp4AmDtKB6kKJDkmxi3aQrs=",
+        "owner": "OlegHQ",
+        "repo": "workbench.nvim",
+        "rev": "909b3d94a2e06bb7bf985e128d3cc8b4338805f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "OlegHQ",
+        "ref": "dev",
+        "repo": "workbench.nvim",
         "type": "github"
       }
     }

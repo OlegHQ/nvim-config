@@ -21,4 +21,5 @@ select = "block"
 
 [keys.normal.space]
 t = "open_theme_picker"
-
+W = "workbench_files"       # Workbench Files, after explicit :Workbench enable.
+"/" = "workbench_search"    # Replaces the default Space / global search; Space f remains the quick picker.

@@ -4,7 +4,7 @@ A simple Neovim configuration demonstrating the power of `autoconf.nvim` and `th
 
 ## Workbench Development
 
-The planned workspace subsystem lives in [workbench.nvim](https://github.com/OlegHQ/workbench.nvim), checked out at `pack/plugins/start/workbench.nvim`. Start with its [implementation plan](https://github.com/OlegHQ/workbench.nvim/blob/dev/docs/PLAN.md) for research, architecture contracts, task dependencies and completion gates. The current revision is planning-only and does not enable a sidebar or change editor behavior.
+Workspace exploration is integrated through [workbench.nvim](https://github.com/OlegHQ/workbench.nvim), checked out at `pack/plugins/start/workbench.nvim`. Its runtime is opt-in and disabled by default. Run `:Workbench enable`, then use `Space W` for Files or `Space /` for Search; `:Workbench disable` closes Workbench-owned views and releases its runtime resources. `Space f` stays the quick file picker, while `Space /` replaces the former global-search binding. Native submodule and optional Nix installations are pinned to the same published runtime revision.
 
 ![Neovim](https://img.shields.io/badge/Neovim-0.9.0+-57A143?style=for-the-badge&logo=neovim&logoColor=white)
 ![Lua](https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white)
@@ -72,7 +72,7 @@ The planned workspace subsystem lives in [workbench.nvim](https://github.com/Ole
 
 ### Installation via Nix Flake (Home Manager)
 
-This configuration is available as a Nix flake with a Home Manager module. It automatically fetches the latest commits of `autoconf.nvim` and `themekit.nvim`.
+This configuration is optionally available as a Nix flake with a Home Manager module. It fetches pinned revisions of `autoconf.nvim`, `themekit.nvim`, and `workbench.nvim`.
 
 1. **Add to your flake inputs** (`flake.nix`):
 
@@ -138,6 +138,11 @@ This configuration is available as a Nix flake with a Home Manager module. It au
 | `Space + t`    | Open theme picker                |
 | `:ThemePicker` | Alternative theme picker command |
 | `:checkhealth` | Check system health              |
+| `:Workbench` | Show Workbench status |
+| `:Workbench enable` | Explicitly enable Workbench for this session |
+| `:Workbench disable` | Disable Workbench and close its owned views |
+| `Space + W` | Open Workbench Files after explicit enable |
+| `Space + /` | Open Workbench Search after explicit enable |
 
 ### Theme Management
 

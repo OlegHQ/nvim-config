@@ -11,7 +11,7 @@ Read the plugin [plan](../../../pack/plugins/start/workbench.nvim/docs/PLAN.md),
 
 Autoconf owns editor feature lifecycle and TOML translation. Workbench owns its workspace/UI subsystem. Themekit owns semantic color mapping. The parent owns defaults, mappings and gitlinks. Nix owns third-party installation. Identify the task's owner before editing; cross-repository changes require separate diffs, tests and commits.
 
-The current planning-only plugin must not be mistaken for an installed feature. Runtime input/wiring is WB-25 after its prerequisites. Verify false settings, mapping precedence, saved-state compatibility, startup/first-use performance and disabling cleanup. Do not silently add nested key namespaces before checking autoconf's key parser supports them.
+Inspect the checkout and pinned revision before treating local runtime code as an installed release. WB-25 and WB-26 were removed by user request; runtime publication and host rollout follow the integration runbook only when separately requested. Retained implementation gates still require false settings, mapping precedence, saved-state compatibility, startup/first-use performance and disabling cleanup. Do not silently add nested key namespaces before checking autoconf's key parser supports them.
 
 Run all checks locally. Do not add GitHub Actions or other hosted CI. Host acceptance requires local end-to-end tests through real Neovim input and rendered windows, with real providers where applicable. Keep reproducible local logs and evidence; unit tests alone cannot establish a working editor workflow.
 

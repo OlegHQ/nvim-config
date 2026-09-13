@@ -4,7 +4,7 @@ This repository hosts a modular Neovim configuration built around `autoconf.nvim
 
 ## Workbench Development Entry
 
-The workbench repository currently contains a detailed implementation specification, not a working plugin. For workbench implementation or review, read its [AGENTS.md](pack/plugins/start/workbench.nvim/AGENTS.md), [plan](pack/plugins/start/workbench.nvim/docs/PLAN.md), and [implementation skill](pack/plugins/start/workbench.nvim/.agents/skills/workbench-implementation/SKILL.md). For host integration, use [.agents/skills/workbench-integration/SKILL.md](.agents/skills/workbench-integration/SKILL.md).
+The workbench repository contains the implementation plan, local runtime and validation harness. Inspect the current checkout and publication state before describing it as released. For workbench implementation or review, read its [AGENTS.md](pack/plugins/start/workbench.nvim/AGENTS.md), [plan](pack/plugins/start/workbench.nvim/docs/PLAN.md), and [implementation skill](pack/plugins/start/workbench.nvim/.agents/skills/workbench-implementation/SKILL.md). For host integration, use [.agents/skills/workbench-integration/SKILL.md](.agents/skills/workbench-integration/SKILL.md).
 
 - Follow the task graph, module ownership, contracts and completion gates. A plan check is not a runtime test. Do not mark unfinished dependencies or unrun gates complete.
 - All validation runs locally. Do not add GitHub Actions or other hosted CI. Runtime acceptance requires local end-to-end tests in real Neovim instances, including input, rendering, focus, provider execution and cleanup.
@@ -22,11 +22,11 @@ This project spans five independent git repositories (the Nix checkout may not b
 | **autoconf.nvim** | `pack/plugins/start/autoconf.nvim` | `git@github.com:OlegHQ/autoconf.nvim` | `dev` |
 | **themekit.nvim** | `pack/plugins/start/themekit.nvim` | `git@github.com:OlegHQ/themekit.nvim` | `dev` |
 | **workbench.nvim** | `pack/plugins/start/workbench.nvim` | `git@github.com:OlegHQ/workbench.nvim.git` | `dev` |
-| **nixos-config** | `nixos-config/` | `git@github-personal:OlegHQ/nixos-config.git` | `main` |
+| **nixos-config** | `nixos-config/` | `git@github-personal:OlegHQ/nixos-config.git` | `dev` |
 
 ### Flake
 
-The root `flake.nix` pins `autoconf-nvim` and `themekit-nvim`. Workbench runtime input/install wiring is task WB-25; its planning-only submodule has no runtime input yet. After publishing runtime plugin changes, update the relevant inputs from the root and inspect the lock diff. Prefer targeted updates to avoid unrelated nixpkgs churn; verify syntax with the installed Nix version.
+The root `flake.nix` pins the custom plugins; inspect each locked revision before assuming it contains the local runtime. WB-25 and WB-26 were removed from the workbench plan by user request; publication and host rollout are separate from the WB-01..WB-24 implementation review. After publishing runtime plugin changes, update the relevant inputs from the root and inspect the lock diff. Prefer targeted updates to avoid unrelated nixpkgs churn; verify syntax with the installed Nix version.
 
 ```sh
 cd ~/.config/nvim
