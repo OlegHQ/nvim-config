@@ -54,5 +54,4 @@ formatter = "rustfmt"
 [[language]]
 name = "ruby"
 lsp = "ruby_lsp"
-formatter = "rubocop"
 tab = { width = 2, expand = true }
